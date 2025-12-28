@@ -27,12 +27,21 @@ body {
 
 #backgroundCanvas {
     display: block;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+    width: 200vw;
+    height: 100%;
+    z-index: 0;
     pointer-events: none;
+}
+
+.top-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 
@@ -40,7 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 3;
+    z-index: 10;
     color: var(--discord-text-white);
     text-align: left;
     position: relative;
@@ -52,13 +61,14 @@ body {
     align-items: flex-start;
     background-color: var(--discord-card-bg);
     border-radius: 8px;
-    padding: 1rem;
-    width: 60vw;
+    padding: 0.75rem;
+    max-width: 680px;
+    width: min(92%, 680px);
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
     position: relative;
-    gap: 0;
+    margin: 0 auto;
+    gap: 0.5rem;
     overflow: hidden;
-    bottom: 70vh;
 }
 
 .top {
@@ -73,18 +83,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 3;
+    z-index: 10;
     color: var(--discord-text-white);
     text-align: left;
     position: relative;
-    margin-top: 0;
+    margin: 0;
 }
 
 .pfp-container {
     position: relative;
-    width: 90px;
-    height: 90px;
-    margin-bottom: 0.5rem;
+    width: 15vw;
 }
 
 .header * {
@@ -107,8 +115,21 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: left;
-    width: 100vw;
+    width: 100%;
     padding: 0;
+    height: max-content;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.controls input[type="range"] {
+    width: 160px;
+    accent-color: var(--spotify-green);
 }
 
 .info h1 {
@@ -116,6 +137,12 @@ body {
     margin: 0;
     font-weight: 700;
     color: var(--discord-text-white);
+}
+
+.live-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
 }
 
 .info h3 {
@@ -140,7 +167,7 @@ body {
 
 i {
     color: var(--discord-text-light);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     cursor: pointer;
     will-change: transform, color, box-shadow;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
@@ -193,8 +220,8 @@ i:active {
 }
 
 .about-container {
+    height: 50vh;
     width: 100vw;
-    transform: translateY(-55vh);
     color: var(--discord-text-white);
     text-align: center;
 }
@@ -208,6 +235,26 @@ i:active {
     overflow-wrap: break-word;
     margin-bottom: 1em;
     margin-top: 1em;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.45s ease;
+    will-change: transform, opacity;
+    padding-left: 1vw;
+}
+
+.aboute {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    box-sizing: border-box;
+    margin: 1em auto;
+    padding: 1rem 1rem;
+    overflow-wrap: break-word;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.45s ease;
+    will-change: transform, opacity;
 }
 
 a {
@@ -231,6 +278,17 @@ img {
     font-weight: 500;
 }
 
-h2 {
+h2, h1 {
+    margin-top: 0.5rem;
+    color: var(--discord-text-white);
+}
+
+.about-container h2,
+.about-container h1 {
     margin-top: 7rem;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }

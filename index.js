@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
     res.sendFile(join(__dirname, 'public', 'templates', 'index.html'));
 });
 
+app.use((req, res) => {
+    res.status(404).sendFile(join(__dirname, 'public', 'templates', '404.html'));
+})
+
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}`);
 });
