@@ -318,6 +318,14 @@ h2, h1 {
   background-color: var(--discord-dark);
 }
 
+.context-menu p {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: var(--discord-text-white);
+  text-align: left;
+}
+
 .header {
     display: flex;
     flex-direction: column;
@@ -344,15 +352,4 @@ h2, h1 {
     object-fit: contain;
     z-index: 3;
     pointer-events: none;
-}
-
-@media (max-width: 720px) {
-    .header .it-image {
-        position: static;
-        width: 24vw;
-        max-width: 160px;
-        margin: 0 0 0.5rem 0;
-        display: block;
-        pointer-events: auto;
-    }
 }
