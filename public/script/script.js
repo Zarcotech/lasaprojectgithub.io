@@ -75,3 +75,21 @@ function initControls() {
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => { resizeCanvasAndSetup(); initScrollAnimations(); initControls(); requestAnimationFrame(drawFrame) })
 else { resizeCanvasAndSetup(); initScrollAnimations(); initControls(); requestAnimationFrame(drawFrame) }
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault(); 
+  
+  const customMenu = document.getElementById('custom-menu');
+  
+  customMenu.style.top = `${e.pageY}px`;
+  customMenu.style.left = `${e.pageX}px`;
+  
+  customMenu.style.display = 'block';
+});
+
+document.addEventListener('click', function(e) {
+  const customMenu = document.getElementById('custom-menu');
+  if (e.button !== 2) {
+    customMenu.style.display = 'none';
+  }
+});
