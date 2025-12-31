@@ -5,7 +5,7 @@ let snippets = ['const', 'let', 'function', 'if', 'else', 'return', 'await', 'as
 let drops = [];
 let rafId = null;
 let lastFrameTime = 0;
-let FPS = 16; 
+let FPS = 16;
 
 const themes = {
   'JavaScript': {
@@ -75,7 +75,7 @@ function loadSavedThemes() {
     const saved = JSON.parse(raw);
     Object.keys(saved).forEach(k => { themes[k] = saved[k]; });
   } catch (e) {
-    console.warn('Failed loading saved themes', e);
+    console.warn(e);
   }
 }
 
@@ -83,29 +83,22 @@ function applyTheme(name) {
   stopAnimation();
   currentTheme = name;
   const t = themes[name] || themes['JavaScript'];
-  
   snippets = (t.snippets || []).slice();
   fontSize = t.fontSize || 16;
   FPS = (t.fps || 0.8) * 20;
-
   localStorage.setItem('currentTheme', currentTheme);
-  
   const sel = document.getElementById('themeSelect');
   if (sel) sel.value = name;
-
   const slider = document.getElementById('rainSpeed');
   const display = document.getElementById('rainSpeedValue');
   if (slider) slider.value = (t.fps || 0.8);
   if (display) display.textContent = (t.fps || 0.8).toFixed(2);
-
   resizeCanvasAndSetup();
-  
   const dpr = window.devicePixelRatio || 1;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  
   startAnimation();
 }
 
@@ -117,10 +110,8 @@ function resizeCanvasAndSetup() {
   canvas.style.width = rect.width + 'px';
   canvas.style.height = rect.height + 'px';
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  
   const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
   const columns = Math.ceil(rect.width / columnWidth) + 10;
-  
   drops = [];
   for (let i = 0; i < columns; i++) {
     drops[i] = Math.floor(Math.random() * -150);
@@ -135,18 +126,14 @@ function drawFrame(timestamp) {
     const dpr = window.devicePixelRatio || 1;
     const viewWidth = canvas.width / dpr;
     const viewHeight = canvas.height / dpr;
-
     ctx.fillStyle = `rgba(0, 0, 0, ${theme.bgAlpha || 0.08})`;
     ctx.fillRect(0, 0, viewWidth, viewHeight);
-
     ctx.fillStyle = theme.textColor || '#FFFFFF';
     ctx.font = `${fontSize}px monospace`;
     const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
-
     for (let i = 0; i < drops.length; i++) {
       const text = snippets[Math.floor(Math.random() * snippets.length)];
       ctx.fillText(text, i * columnWidth, drops[i] * fontSize);
-      
       if (drops[i] * fontSize > viewHeight && Math.random() > 0.992) {
         drops[i] = 0;
       }
@@ -170,13 +157,11 @@ function initScrollAnimations() {
   const elementsToAnimate = document.querySelectorAll('.about-content, .aboute');
   let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
   let scrollDir = 'down';
-
   window.addEventListener('scroll', () => {
     const currentY = window.pageYOffset || document.documentElement.scrollTop;
     scrollDir = currentY < lastScrollY ? 'up' : 'down';
     lastScrollY = currentY;
   }, { passive: true });
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -186,7 +171,6 @@ function initScrollAnimations() {
       }
     });
   }, { threshold: [0, 0.1] });
-
   elementsToAnimate.forEach(el => observer.observe(el));
 }
 
@@ -200,7 +184,6 @@ function initControls() {
       if (display) display.textContent = val.toFixed(2);
     });
   }
-  
   const themeSelect = document.getElementById('themeSelect');
   if (themeSelect) {
     themeSelect.addEventListener('change', (e) => {
@@ -210,41 +193,60 @@ function initControls() {
   refreshThemeDropdown();
 }
 
+const pickr = Pickr.create({
+    el: '.color-picker',
+    theme: 'monolith',
+    default: '#424487',
+    components: {
+        preview: true, opacity: true, hue: true,
+        interaction: { hex: true, rgba: true, input: true, save: true }
+    }
+});
+
+async function useEyeDropper() {
+    if (!window.EyeDropper) return;
+    const eyeDropper = new EyeDropper();
+    try {
+        const result = await eyeDropper.open();
+        pickr.setColor(result.sRGBHex);
+    } catch (e) {}
+}
+
 function sendNew() {
-  const nameEl = document.getElementById('themeName');
-  const snipEl = document.getElementById('newSnippets');
-  const colorEl = document.getElementById('textColor');
-  const alphaEl = document.getElementById('bgAlpha');
-  const sizeEl = document.getElementById('fontSize');
-  const speedEl = document.getElementById('rainSpeedInput');
+    pickr.applyColor();
+    const color = pickr.getColor();
+    const nameEl = document.getElementById('themeName');
+    const snipEl = document.getElementById('newSnippets');
+    const alphaEl = document.getElementById('bgAlpha');
+    const sizeEl = document.getElementById('fontSize');
+    const speedEl = document.getElementById('rainSpeedInput');
 
-  const themeName = (nameEl && nameEl.value.trim()) || `Custom-${Date.now()}`;
-  
-  let alphaVal = alphaEl ? parseFloat(alphaEl.value) : 0.08;
-  if (alphaVal > 0.3) alphaVal = 0.08; 
+    const themeName = (nameEl && nameEl.value.trim()) || `Custom-${Date.now()}`;
+    const hexColor = color.toHEXA().toString();
+    
+    let alphaVal = alphaEl ? parseFloat(alphaEl.value) : 0.08;
+    if (alphaVal > 0.3) alphaVal = 0.08;
 
-  const newTheme = {
-    snippets: (snipEl && snipEl.value) ? snipEl.value.split(',').map(s => s.trim()).filter(Boolean) : themes['JavaScript'].snippets.slice(),
-    textColor: (colorEl && colorEl.value) || '#FFFFFF',
-    bgAlpha: alphaVal,
-    fontSize: sizeEl ? parseInt(sizeEl.value) : 16,
-    fps: speedEl ? parseFloat(speedEl.value) : 0.8
-  };
+    const newTheme = {
+      snippets: (snipEl && snipEl.value) ? snipEl.value.split(',').map(s => s.trim()).filter(Boolean) : themes['JavaScript'].snippets.slice(),
+      textColor: hexColor,
+      bgAlpha: alphaVal,
+      fontSize: sizeEl ? parseInt(sizeEl.value) : 16,
+      fps: speedEl ? parseFloat(speedEl.value) : 0.8
+    };
 
+    themes[themeName] = newTheme;
+    const saved = JSON.parse(localStorage.getItem('savedThemes') || '{}');
+    saved[themeName] = newTheme;
+    localStorage.setItem('savedThemes', JSON.stringify(saved));
 
-  themes[themeName] = newTheme;
-  const saved = JSON.parse(localStorage.getItem('savedThemes') || '{}');
-  saved[themeName] = newTheme;
-  localStorage.setItem('savedThemes', JSON.stringify(saved));
-
-  refreshThemeDropdown();
-  applyTheme(themeName);
+    refreshThemeDropdown();
+    applyTheme(themeName);
 }
 
 function refreshThemeDropdown() {
   const sel = document.getElementById('themeSelect');
   if (!sel) return;
-  
   const currentVal = currentTheme;
   sel.innerHTML = '';
   Object.keys(themes).forEach(k => {
