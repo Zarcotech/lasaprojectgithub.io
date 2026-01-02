@@ -7,6 +7,9 @@ let rafId = null;
 let lastFrameTime = 0;
 let FPS = 16;
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 const themes = {
   'JavaScript': {
     snippets: ['const', 'let', 'function', 'if', 'else', 'return', 'await', 'async', 'class', 'new', 'this', '=>', 'console.log'],
@@ -122,15 +125,18 @@ function drawFrame(timestamp) {
   const elapsed = timestamp - lastFrameTime;
   if (elapsed > 1000 / FPS) {
     lastFrameTime = timestamp;
-    const theme = themes[currentTheme] || themes['JavaScript'];
+    const themeConfig = themes[currentTheme] || themes['JavaScript'];
     const dpr = window.devicePixelRatio || 1;
     const viewWidth = canvas.width / dpr;
     const viewHeight = canvas.height / dpr;
-    ctx.fillStyle = `rgba(0, 0, 0, ${theme.bgAlpha || 0.08})`;
+    
+    ctx.fillStyle = `rgba(0, 0, 0, ${themeConfig.bgAlpha || 0.08})`;
     ctx.fillRect(0, 0, viewWidth, viewHeight);
-    ctx.fillStyle = theme.textColor || '#FFFFFF';
+    
+    ctx.fillStyle = themeConfig.textColor || '#FFFFFF';
     ctx.font = `${fontSize}px monospace`;
     const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
+    
     for (let i = 0; i < drops.length; i++) {
       const text = snippets[Math.floor(Math.random() * snippets.length)];
       ctx.fillText(text, i * columnWidth, drops[i] * fontSize);
@@ -191,57 +197,6 @@ function initControls() {
     });
   }
   refreshThemeDropdown();
-}
-
-const pickr = Pickr.create({
-    el: '.color-picker',
-    theme: 'monolith',
-    default: '#424487',
-    components: {
-        preview: true, opacity: true, hue: true,
-        interaction: { hex: true, rgba: true, input: true, save: true }
-    }
-});
-
-async function useEyeDropper() {
-    if (!window.EyeDropper) return;
-    const eyeDropper = new EyeDropper();
-    try {
-        const result = await eyeDropper.open();
-        pickr.setColor(result.sRGBHex);
-    } catch (e) {}
-}
-
-function sendNew() {
-    pickr.applyColor();
-    const color = pickr.getColor();
-    const nameEl = document.getElementById('themeName');
-    const snipEl = document.getElementById('newSnippets');
-    const alphaEl = document.getElementById('bgAlpha');
-    const sizeEl = document.getElementById('fontSize');
-    const speedEl = document.getElementById('rainSpeedInput');
-
-    const themeName = (nameEl && nameEl.value.trim()) || `Custom-${Date.now()}`;
-    const hexColor = color.toHEXA().toString();
-    
-    let alphaVal = alphaEl ? parseFloat(alphaEl.value) : 0.08;
-    if (alphaVal > 0.3) alphaVal = 0.08;
-
-    const newTheme = {
-      snippets: (snipEl && snipEl.value) ? snipEl.value.split(',').map(s => s.trim()).filter(Boolean) : themes['JavaScript'].snippets.slice(),
-      textColor: hexColor,
-      bgAlpha: alphaVal,
-      fontSize: sizeEl ? parseInt(sizeEl.value) : 16,
-      fps: speedEl ? parseFloat(speedEl.value) : 0.8
-    };
-
-    themes[themeName] = newTheme;
-    const saved = JSON.parse(localStorage.getItem('savedThemes') || '{}');
-    saved[themeName] = newTheme;
-    localStorage.setItem('savedThemes', JSON.stringify(saved));
-
-    refreshThemeDropdown();
-    applyTheme(themeName);
 }
 
 function refreshThemeDropdown() {
