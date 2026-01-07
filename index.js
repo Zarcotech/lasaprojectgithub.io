@@ -1,6 +1,5 @@
 import express from 'express';
 import { join, dirname, resolve } from 'path'; 
-import { Client, GatewayIntentBits, Partials, ActivityType } from 'discord.js';
 import { fileURLToPath } from 'url';
 
 const app = express();
