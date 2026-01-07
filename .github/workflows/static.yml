@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # This tells GitHub to only upload the "public" folder
-          path: './public'
+          path: './public/templates'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
