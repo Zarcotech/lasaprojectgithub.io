@@ -1,6 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+.header,
+.top,
+.top-hero {
+    display: flex
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.head-container,
+.header,
+.header *,
+.pfp-container,
+.top,
+.top-hero {
+    position: relative
+}
+
+.about-container,
+.head-container {
+    color: var(--discord-text-white)
+}
+
+.context-menu a:hover,
+body {
+    background-color: var(--discord-dark)
+}
+
+.context-menu a,
+a {
+    text-decoration: none
+}
+
 :root {
     --discord-dark: #202225;
     --discord-card-bg: #2f3136;
@@ -12,21 +46,19 @@
     --discord-status-offline: #747f8d;
     --discord-pfp-ring: #202225;
     --discord-bubble-bg: #2d2f34;
-    --spotify-green: #1DB954;
+    --spotify-green: #1DB954
 }
 
 * {
     font-family: 'Space Grotesk', sans-serif;
+    box-sizing: border-box
 }
 
 body {
-    font-family: 'Space Grotesk', sans-serif;
-    background-color: var(--discord-dark);
     margin: 0;
     min-height: 100vh;
     padding-bottom: calc(3vh + 24px);
-    overflow-x: hidden;
-    display: block;
+    overflow-x: hidden
 }
 
 #backgroundCanvas {
@@ -37,575 +69,273 @@ body {
     width: 100vw;
     height: 100%;
     z-index: 0;
-    pointer-events: none;
+    pointer-events: none
 }
 
 .top-hero {
     height: 100vh;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    justify-content: center
 }
-
 
 .head-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 10;
-    color: var(--discord-text-white);
-    text-align: left;
-    position: relative;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.5s ease;
+}
+
+.head-container:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
 }
 
 .header {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     background-color: var(--discord-card-bg);
     border-radius: 8px;
-    padding: 0.75rem;
+    padding: .75rem;
     max-width: 680px;
     width: min(92%, 680px);
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-    position: relative;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
     margin: 0 auto;
-    gap: 0.5rem;
-    overflow: hidden;
+    gap: .5rem;
+    overflow: hidden
 }
 
 .top {
     height: 30vh;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    justify-content: center
+}
+
+.head-container,
+.info {
+    display: flex;
+    flex-direction: column;
+    text-align: left
 }
 
 .head-container {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     z-index: 10;
-    color: var(--discord-text-white);
-    text-align: left;
-    position: relative;
-    margin: 0;
+    margin: 0
 }
 
 .pfp-container {
-    position: relative;
-    width: 15vw;
+    width: 15vw
 }
 
 .header * {
-    position: relative;
-    z-index: 2;
+    z-index: 2
 }
 
 .pfp {
-    width: 10vw;
+    width: 100%;
+    max-width: 250px;
     border-radius: 50%;
     object-fit: cover;
     margin: 0;
     border: 3px solid var(--discord-pfp-ring);
-    z-index: 2;
+    z-index: 2
 }
-
 
 .info {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    text-align: left;
     width: 100%;
     padding: 0;
-    height: max-content;
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-.controls input[type="range"] {
-    width: 160px;
-    accent-color: var(--spotify-green);
+    height: max-content
 }
 
 .info h1 {
     font-size: 1.5rem;
     margin: 0;
-    font-weight: 700;
-    color: var(--discord-text-white);
+    font-weight: 700
 }
 
-.live-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.25rem;
-}
-
-.info h3 {
-    font-size: 0.875rem;
-    margin: 0.25rem 0 0 0;
-    font-weight: 400;
+.about p {
+    font-size: .9rem;
     color: var(--discord-text-light);
+    margin: .5rem 0 0
 }
 
-#status {
-    font-weight: 700;
-    color: var(--discord-text-light);
-}
-
-.socials {
+.it-image {
     position: absolute;
     top: 10px;
     right: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-i {
-    color: var(--discord-text-light);
-    font-size: 1.25rem;
-    cursor: pointer;
-    will-change: transform, color, box-shadow;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-i:hover {
-    color: var(--discord-text-white);
-    transform: scale(1.15);
-    animation: pulse-hover 1s infinite alternate cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-i:active {
-    transform: scale(0.9);
-    animation: none;
-}
-
-@keyframes pulse-hover {
-    0% {
-        box-shadow: 0 0 0 0 rgba(var(59, 165, 93), 0.7);
-    }
-
-    100% {
-        box-shadow: 0 0 0 20px rgba(var(59, 165, 93), 0);
-    }
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    z-index: 3;
+    pointer-events: none
 }
 
 .hotbar {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 3vh;
     background: linear-gradient(90deg, #3ba55d, #faa81a, #f04747, #406aa0, #3ba55d);
     background-size: 500% 100%;
-    animation: hotbarAnimation 10s linear infinite;
-    z-index: 10;
-    align-items: end;
-    justify-content: end;
+    animation: 10s linear infinite hotbarAnimation;
+    z-index: 100
 }
 
 @keyframes hotbarAnimation {
     0% {
-        background-position: 0% 0%;
+        background-position: 0 0
     }
 
     100% {
-        background-position: 100% 0%;
+        background-position: 100% 0
     }
 }
 
 .about-container {
-    height: auto;
-    width: 100vw;
-    color: var(--discord-text-white);
+    width: 100%;
     text-align: center;
+    padding: 2rem 0
 }
 
-.about-content {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    box-sizing: border-box;
-    margin: 1em auto;
-    padding: 1rem 1rem;
-    overflow-wrap: break-word;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    transform: translateY(40px);
-    opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.45s ease;
-    will-change: transform, opacity;
-    padding-left: 1vw;
+.achievement-icon i,
+.green,
+a {
+    color: var(--spotify-green)
 }
 
 .aboute {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    box-sizing: border-box;
-    margin: 1em auto;
-    padding: 1rem 1rem;
-    overflow-wrap: break-word;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    transform: translateY(40px);
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
     opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.45s ease;
-    will-change: transform, opacity;
-}
-
-a {
-    color: var(--spotify-green);
-    text-decoration: none;
-}
-
-img {
-    max-width: 40vw;
-    border-radius: 8px;
-    margin: 1rem 0;
-}
-
-.grade-small {
-    max-width: 40vw;
-}
-
-.green {
-    color: var(--spotify-green);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-h2,
-h1 {
-    margin-top: 0.5rem;
-    color: var(--discord-text-white);
-}
-
-.about-container h2,
-.about-container h1 {
-    margin-top: 7rem;
+    transform: translateY(40px);
+    transition: .6s cubic-bezier(.19, 1, .22, 1)
 }
 
 .fade-in {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0)
+}
+
+.about-content {
+    font-size: 1.1rem;
+    line-height: 1.6
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+    transition: transform .8s
+}
+
+img:hover {
+    transform: scale(1.05)
+}
+
+.green {
+    font-weight: 500
+}
+
+.achievement-container,
+.org-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 4rem auto;
+    color: var(--discord-text-white);
+    text-align: center
+}
+
+.achievement-grid,
+.org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%
+}
+
+.achievement-card,
+.org-card {
+    background-color: var(--discord-card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    transition: transform .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.achievement-card:hover,
+.org-card:hover {
+    transform: scale(1.05)
+}
+
+.img-org {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: .5rem
+}
+
+.achievement-info {
+    text-align: left;
+    width: 100%
+}
+
+.achievement-icon i {
+    font-size: 1.5rem;
+    margin-bottom: 1rem
 }
 
 .context-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     background-color: var(--discord-card-bg);
     border: 1px solid var(--discord-pfp-ring);
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-    padding: 5px 0;
-    z-index: 1000;
     border-radius: 10px;
-    width: fit-content;
-    font-size: smaller;
+    padding: 5px 0;
+    z-index: 1000
 }
 
 .context-menu a {
     display: block;
     padding: 8px 12px;
-    text-decoration: none;
-    color: var(--discord-text-white);
-    text-align: left;
-}
-
-.context-menu a:hover {
-    background-color: var(--discord-dark);
-}
-
-.context-menu p {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: var(--discord-text-white);
-    text-align: left;
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--discord-card-bg);
-    border-radius: 8px;
-    padding: 0.75rem;
-    max-width: 680px;
-    width: min(92%, 680px);
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-    position: relative;
-    margin: 0 auto;
-    gap: 0.5rem;
-    overflow: hidden;
-}
-
-.header .it-image {
-    position: absolute;
-    top: 5vh;
-    right: 5vw;
-    width: 15vw;
-    height: auto;
-    border-radius: 6px;
-    object-fit: contain;
-    z-index: 3;
-    pointer-events: none;
-}
-
-.createTheme input {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    background-color: var(--discord-card-bg);
-    border: var(--spotify-green) 3px solid;
-    color: var(--discord-text-white);
-    font-family: 'Space Grotesk', sans-serif;
-    border-radius: 10px;
-    gap: calc(0.3em);
-    box-sizing: border-box;
-}
-
-.createTheme input::placeholder {
-    color: var(--discord-text-light);
-}
-
-.createTheme input:focus {
-    outline: none;
-    box-shadow: 0 0 5px var(--spotify-green);
-}
-
-.createTheme {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    max-height: 30vh;
-    overflow-y: auto;
-    box-sizing: border-box;
-    border: var(--spotify-green) 3px solid;
-    padding: 0.8rem;
-    border-radius: 10px;
-}
-
-button {
-    background-color: var(--spotify-green);
-    color: var(--discord-text-white);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-label {
-    color: var(--discord-text-white);
-    font-size: 0.9rem;
-}
-
-.createTheme inout {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    background-color: var(--discord-card-bg);
-    border: var(--spotify-green) 3px solid;
-    color: var(--discord-text-white);
-    font-family: 'Space Grotesk', sans-serif;
-    border-radius: 10px;
-    gap: calc(0.3em);
-    box-sizing: border-box;
-}
-
-#themeSelect {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    background-color: var(--discord-card-bg);
-    border: var(--spotify-green) 3px solid;
-    color: var(--discord-text-white);
-    font-family: 'Space Grotesk', sans-serif;
-    border-radius: 10px;
-    gap: calc(0.3em);
-    box-sizing: border-box;
-    padding: 0.5rem;
-}
-
-select::option(:first-of-type) {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-select::option(:last-of-type) {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-select:focus {
-    outline: none;
-}
-
-#rainSpeed:focus {
-    outline: none;
+    color: #fff
 }
 
 ::-webkit-scrollbar {
     background: var(--discord-card-bg);
-}
-
-::-webkit-scrollbar::after {
-    background: var(--discord-card-bg);
+    width: 20px
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--spotify-green);
-    border-radius: 10px;
+    border-radius: 10px
 }
 
-body {
-    scrollbar-color: var(--spotify-green) var(--discord-card-bg);
-    scrollbar-highlight-color: var(--spotify-green);
-}
+@media (max-width:600px) {
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
+    .header,
+    .info {
+        text-align: center
+    }
 
-input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-option::hover {
-    cursor: pointer;
-}
-
-.achievement-container {
-    width: 90vw;
-    color: var(--discord-text-white);
-    padding-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    left: 5vw;
-}
-
-.achievement-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-}
-
-.achievement-card {
-    background-color: var(--discord-card-bg);
-    border-radius: 8px;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: transform 0.5s ease;
-    width: 22vw;
-}
-
-.achievement-icon {
-    background-color: var(--discord-dark);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.achievement-icon i {
-    color: var(--spotify-green);
-}
-
-.achievement-info {
-    text-align: left;
-}
-
-.achievement-title {
-    font-weight: 700;
-}
-
-.achievement-desc {
-    font-size: 0.85rem;
-    color: var(--discord-text-light);
-}
-
-.achievement-card:hover {
-    transform: scale(1.09);
-    transition: transform 0.5s ease;
-    cursor: pointer;
+    .header {
+        flex-direction: column
+    }
 }
 
 img:hover {
-    transform: scale(1.04);
-    transition: transform 0.5s ease;
     cursor: pointer;
 }
 
-img {
-    transition: transform 0.8s ease;
-}
-
-.org-container {
-    width: 90vw;
-    color: var(--discord-text-white);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem;
-    left: 5vw;
-}
-
-.org-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-}
-
-.org-card {
-    background-color: var(--discord-card-bg);
-    border-radius: 8px;
-    padding: 0.6rem;
-    display: block;
-    align-items: center;
-    transition: transform 0.5s ease;
-    width: 22vw;
-}
-
-.img-org {
-    width: 20vw;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    transition: none;
-}
-
-.img-org:hover {
-    transition: none;
-    transform: scale(1);
-}
-
-.org-card:hover {
-    transform: scale(1.09);
-    transition: transform 0.5s ease;
-    cursor: pointer;
-}
-
-/* this one image had to be annyoing for some reason */
-.patrol {
-    height: 15vh;
-    width: auto;
+hr {
+    width: 100%;
 }
