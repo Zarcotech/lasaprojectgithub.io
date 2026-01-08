@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Who Am I? Zidan Harb</title>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/refs/heads/main/public/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/refs/heads/main/public/style/style.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -18,347 +21,361 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
-.header,
-.top,
-.top-hero {
-    display: flex
-}
+      .header,
+      .top,
+      .top-hero {
+        display: flex;
+      }
 
-html {
-    scroll-behavior: smooth;
-}
+      html {
+        scroll-behavior: smooth;
+      }
 
-.head-container,
-.header,
-.header *,
-.pfp-container,
-.top,
-.top-hero {
-    position: relative
-}
+      .head-container,
+      .header,
+      .header *,
+      .pfp-container,
+      .top,
+      .top-hero {
+        position: relative;
+      }
 
-.about-container,
-.head-container {
-    color: var(--discord-text-white)
-}
+      .about-container,
+      .head-container {
+        color: var(--discord-text-white);
+      }
 
-.context-menu a:hover,
-body {
-    background-color: var(--discord-dark)
-}
+      .context-menu a:hover,
+      body {
+        background-color: var(--discord-dark);
+      }
 
-.context-menu a,
-a {
-    text-decoration: none
-}
+      .context-menu a,
+      a {
+        text-decoration: none;
+      }
 
-:root {
-    --discord-dark: #202225;
-    --discord-card-bg: #2f3136;
-    --discord-text-white: #ffffff;
-    --discord-text-light: #b9bbbe;
-    --discord-status-online: #3ba55d;
-    --discord-status-idle: #faa81a;
-    --discord-status-dnd: #f04747;
-    --discord-status-offline: #747f8d;
-    --discord-pfp-ring: #202225;
-    --discord-bubble-bg: #2d2f34;
-    --spotify-green: #1DB954
-}
+      :root {
+        --discord-dark: #202225;
+        --discord-card-bg: #2f3136;
+        --discord-text-white: #ffffff;
+        --discord-text-light: #b9bbbe;
+        --discord-status-online: #3ba55d;
+        --discord-status-idle: #faa81a;
+        --discord-status-dnd: #f04747;
+        --discord-status-offline: #747f8d;
+        --discord-pfp-ring: #202225;
+        --discord-bubble-bg: #2d2f34;
+        --spotify-green: #1db954;
+      }
 
-* {
-    font-family: 'Space Grotesk', sans-serif;
-    box-sizing: border-box
-}
+      * {
+        font-family: "Space Grotesk", sans-serif;
+        box-sizing: border-box;
+      }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    padding-bottom: calc(3vh + 24px);
-    overflow-x: hidden
-}
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding-bottom: calc(3vh + 24px);
+        overflow-x: hidden;
+      }
 
-#backgroundCanvas {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none
-}
+      #backgroundCanvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+      }
 
-.top-hero {
-    height: 100vh;
-    align-items: center;
-    justify-content: center
-}
+      .top-hero {
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
 
-.head-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 600px;
-    transition: transform 0.5s ease;
-}
+      .head-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 600px;
+        transition: transform 0.5s ease;
+      }
 
-.head-container:hover {
-    transform: scale(1.05);
-    transition: transform 0.5s ease;
-}
+      .head-container:hover {
+        transform: scale(1.05);
+        transition: transform 0.5s ease;
+      }
 
-.header {
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--discord-card-bg);
-    border-radius: 8px;
-    padding: .75rem;
-    max-width: 680px;
-    width: min(92%, 680px);
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
-    margin: 0 auto;
-    gap: .5rem;
-    overflow: hidden
-}
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: var(--discord-card-bg);
+        border-radius: 8px;
+        padding: 0.75rem;
+        max-width: 680px;
+        width: min(92%, 680px);
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+        gap: 0.5rem;
+        overflow: hidden;
+      }
 
-.top {
-    height: 30vh;
-    align-items: center;
-    justify-content: center
-}
+      .top {
+        height: 30vh;
+        align-items: center;
+        justify-content: center;
+      }
 
-.head-container,
-.info {
-    display: flex;
-    flex-direction: column;
-    text-align: left
-}
+      .head-container,
+      .info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
 
-.head-container {
-    align-items: center;
-    z-index: 10;
-    margin: 0
-}
+      .head-container {
+        align-items: center;
+        z-index: 10;
+        margin: 0;
+      }
 
-.pfp-container {
-    width: 15vw
-}
+      .pfp-container {
+        width: 15vw;
+      }
 
-.header * {
-    z-index: 2
-}
+      .header * {
+        z-index: 2;
+      }
 
-.pfp {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0;
-    border: 3px solid var(--discord-pfp-ring);
-    z-index: 2
-}
+      .pfp {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0;
+        border: 3px solid var(--discord-pfp-ring);
+        z-index: 2;
+      }
 
-.info {
-    justify-content: center;
-    width: 100%;
-    padding: 0;
-    height: max-content
-}
+      .info {
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        height: max-content;
+      }
 
-.info h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    font-weight: 700
-}
+      .info h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        font-weight: 700;
+      }
 
-.about p {
-    font-size: .9rem;
-    color: var(--discord-text-light);
-    margin: .5rem 0 0
-}
+      .about p {
+        font-size: 0.9rem;
+        color: var(--discord-text-light);
+        margin: 0.5rem 0 0;
+      }
 
-.it-image {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    z-index: 3;
-    pointer-events: none
-}
+      .it-image {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        z-index: 3;
+        pointer-events: none;
+      }
 
-.hotbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3vh;
-    background: linear-gradient(90deg, #3ba55d, #faa81a, #f04747, #406aa0, #3ba55d);
-    background-size: 500% 100%;
-    animation: 10s linear infinite hotbarAnimation;
-    z-index: 100
-}
+      .hotbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3vh;
+        background: linear-gradient(
+          90deg,
+          #3ba55d,
+          #faa81a,
+          #f04747,
+          #406aa0,
+          #3ba55d
+        );
+        background-size: 500% 100%;
+        animation: 10s linear infinite hotbarAnimation;
+        z-index: 100;
+      }
 
-@keyframes hotbarAnimation {
-    0% {
-        background-position: 0 0
-    }
+      @keyframes hotbarAnimation {
+        0% {
+          background-position: 0 0;
+        }
 
-    100% {
-        background-position: 100% 0
-    }
-}
+        100% {
+          background-position: 100% 0;
+        }
+      }
 
-.about-container {
-    width: 100%;
-    text-align: center;
-    padding: 2rem 0
-}
+      .about-container {
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+      }
 
-.achievement-icon i,
-.green,
-a {
-    color: var(--spotify-green)
-}
+      .achievement-icon i,
+      .green,
+      a {
+        color: var(--spotify-green);
+      }
 
-.aboute {
-    max-width: 800px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: .6s cubic-bezier(.19, 1, .22, 1)
-}
+      .aboute {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      }
 
-.fade-in {
-    opacity: 1;
-    transform: translateY(0)
-}
+      .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-.about-content {
-    font-size: 1.1rem;
-    line-height: 1.6
-}
+      .about-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 1rem 0;
-    transition: transform .8s
-}
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1rem 0;
+        transition: transform 0.8s;
+      }
 
-img:hover {
-    transform: scale(1.05)
-}
+      img:hover {
+        transform: scale(1.05);
+      }
 
-.green {
-    font-weight: 500
-}
+      .green {
+        font-weight: 500;
+      }
 
-.achievement-container,
-.org-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 4rem auto;
-    color: var(--discord-text-white);
-    text-align: center
-}
+      .achievement-container,
+      .org-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 4rem auto;
+        color: var(--discord-text-white);
+        text-align: center;
+      }
 
-.achievement-grid,
-.org-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    width: 100%
-}
+      .achievement-grid,
+      .org-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+      }
 
-.achievement-card,
-.org-card {
-    background-color: var(--discord-card-bg);
-    border-radius: 8px;
-    padding: 1.5rem;
-    width: 100%;
-    max-width: 900px;
-    transition: transform .5s;
-    display: flex;
-    flex-direction: column;
-    align-items: center
-}
+      .achievement-card,
+      .org-card {
+        background-color: var(--discord-card-bg);
+        border-radius: 8px;
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 900px;
+        transition: transform 0.5s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-.achievement-card:hover,
-.org-card:hover {
-    transform: scale(1.05)
-}
+      .achievement-card:hover,
+      .org-card:hover {
+        transform: scale(1.05);
+      }
 
-.img-org {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-    margin-bottom: .5rem
-}
+      .img-org {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 0.5rem;
+      }
 
-.achievement-info {
-    text-align: left;
-    width: 100%
-}
+      .achievement-info {
+        text-align: left;
+        width: 100%;
+      }
 
-.achievement-icon i {
-    font-size: 1.5rem;
-    margin-bottom: 1rem
-}
+      .achievement-icon i {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
 
-.context-menu {
-    display: none;
-    position: fixed;
-    background-color: var(--discord-card-bg);
-    border: 1px solid var(--discord-pfp-ring);
-    border-radius: 10px;
-    padding: 5px 0;
-    z-index: 1000
-}
+      .context-menu {
+        display: none;
+        position: fixed;
+        background-color: var(--discord-card-bg);
+        border: 1px solid var(--discord-pfp-ring);
+        border-radius: 10px;
+        padding: 5px 0;
+        z-index: 1000;
+      }
 
-.context-menu a {
-    display: block;
-    padding: 8px 12px;
-    color: #fff
-}
+      .context-menu a {
+        display: block;
+        padding: 8px 12px;
+        color: #fff;
+      }
 
-::-webkit-scrollbar {
-    background: var(--discord-card-bg);
-    width: 20px
-}
+      ::-webkit-scrollbar {
+        background: var(--discord-card-bg);
+        width: 20px;
+      }
 
-::-webkit-scrollbar-thumb {
-    background: var(--spotify-green);
-    border-radius: 10px
-}
+      ::-webkit-scrollbar-thumb {
+        background: var(--spotify-green);
+        border-radius: 10px;
+      }
 
-@media (max-width:600px) {
+      @media (max-width: 600px) {
+        .header,
+        .info {
+          text-align: center;
+        }
 
-    .header,
-    .info {
-        text-align: center
-    }
+        .header {
+          flex-direction: column;
+        }
+      }
 
-    .header {
-        flex-direction: column
-    }
-}
+      img:hover {
+        cursor: pointer;
+      }
 
-img:hover {
-    cursor: pointer;
-}
+      hr {
+        width: 100%;
+      }
 
-hr {
-    width: 100%;
-}
+      @media (min-width: 400px) and (max-width: 600px) {
+        .it-image {
+          max-width: 100px;
+          width: 100%;
+          height: auto;
+        }
+      }
     </style>
     <link
       rel="shortcut icon"
@@ -605,8 +622,8 @@ hr {
             using a reverse proxy tool called
             <a href="https://nginx.org/" target="_blank">Nginx</a> (pronounced
             "Engine-X") to get my online local websites onto my domain. This was
-            a huge leap for me. I was hosting my own websites online, and I
-            was loving every bit of it. I continued to learn more about web
+            a huge leap for me. I was hosting my own websites online, and I was
+            loving every bit of it. I continued to learn more about web
             development, cybersecurity, and server management. I even started
             learning about ethical hacking and penetration testing in 8th grade,
             which fascinated me.
@@ -866,292 +883,443 @@ hr {
       <h1>Organizations and Extracurriculars</h1>
       <div class="org-grid">
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/cybersalam.png" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/cybersalam.png"
+            class="img-org"
+          />
           <hr />
           <p>Cyber Salam FTC: 2024-Present</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/ftc.png" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/ftc.png"
+            class="img-org"
+          />
           <hr />
           <p>FIRST Tech Challenge: 2024-Present</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/njhs.png" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/njhs.png"
+            class="img-org"
+          />
           <hr />
           <p>NJHS at Kealing Middle School: 2024-Present</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/wksa.jpg" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/wksa.jpg"
+            class="img-org"
+          />
           <hr />
           <p>Kuk Sool Won of Oak Hill: 2017-Present</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/nitro.png" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/nitro.png"
+            class="img-org"
+          />
           <hr />
           <p>Nitro Swimming: 2018-2021</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/namcc.jpg" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/namcc.jpg"
+            class="img-org"
+          />
           <hr />
           <p>NAMCC FLL Robotics Program: 2022-2023</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/pals.png" class="img-org" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/pals.png"
+            class="img-org"
+          />
           <hr />
           <p>PALS: 2022-2023</p>
         </div>
         <div class="org-card">
-          <img src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/patrol.ong.png" class="img-org patrol" />
+          <img
+            src="https://raw.githubusercontent.com/Zarcotech/lasaprojectgithub.io/main/public/images/orgs/patrol.ong.png"
+            class="img-org patrol"
+          />
           <hr />
           <p>Safety Patrol: 2022-2023</p>
         </div>
       </div>
     </div>
-   <script>
-     const canvas = document.getElementById('backgroundCanvas');
-const ctx = canvas.getContext('2d');
-let fontSize = 16;
-let snippets = ['const', 'let', 'function', 'if', 'else', 'return', 'await', 'async', 'true', 'false', 'null', 'typeof', 'class', 'new', 'this'];
-let drops = [];
-let rafId = null;
-let lastFrameTime = 0;
-let FPS = 16;
+    <script>
+      const canvas = document.getElementById("backgroundCanvas");
+      const ctx = canvas.getContext("2d");
+      let fontSize = 16;
+      let snippets = [
+        "const",
+        "let",
+        "function",
+        "if",
+        "else",
+        "return",
+        "await",
+        "async",
+        "true",
+        "false",
+        "null",
+        "typeof",
+        "class",
+        "new",
+        "this",
+      ];
+      let drops = [];
+      let rafId = null;
+      let lastFrameTime = 0;
+      let FPS = 16;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-const themes = {
-  'JavaScript': {
-    snippets: ['const', 'let', 'function', 'if', 'else', 'return', 'await', 'async', 'class', 'new', 'this', '=>', 'console.log'],
-    textColor: '#F0DB4F',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  },
-  'Python': {
-    snippets: ['def', 'import', 'print', 'self', 'None', 'True', 'False', 'class', 'lambda', 'return', 'async', 'await'],
-    textColor: '#453bffff',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  },
-  'C++': {
-    snippets: ['int', 'float', 'double', 'std::', 'include', 'cout', 'cin', 'class', 'template', 'return', 'new', 'delete'],
-    textColor: '#5599ff',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  },
-  'HTML': {
-    snippets: ['<div>', '<a>', '<p>', '<img>', '<h1>', '<span>', '<script>', '<link>', '<header>', '<footer>'],
-    textColor: '#FF5733',
-    bgAlpha: 0.08,
-    fontSize: 14,
-    fps: 0.8
-  },
-  'CSS': {
-    snippets: ['color', 'background', 'display', 'flex', 'grid', 'margin', 'padding', 'border', '@media', ':root'],
-    textColor: '#663399',
-    bgAlpha: 0.08,
-    fontSize: 14,
-    fps: 0.8
-  },
-  'Bash': {
-    snippets: ['echo', 'ls', 'cd', 'mkdir', 'rm', 'touch', 'sudo', 'apt-get', 'chmod', 'chown'],
-    textColor: '#4EAA25',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  },
-  'Java': {
-    snippets: ['public', 'static', 'void', 'class', 'new', 'import', 'return', 'if', 'else', 'this'],
-    textColor: '#b07219',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  },
-  'Rust': {
-    snippets: ['fn', 'let', 'mut', 'struct', 'enum', 'impl', 'trait', 'use', 'pub', 'return'],
-    textColor: '#5599ff',
-    bgAlpha: 0.08,
-    fontSize: 16,
-    fps: 0.8
-  }
-};
+      const themes = {
+        JavaScript: {
+          snippets: [
+            "const",
+            "let",
+            "function",
+            "if",
+            "else",
+            "return",
+            "await",
+            "async",
+            "class",
+            "new",
+            "this",
+            "=>",
+            "console.log",
+          ],
+          textColor: "#F0DB4F",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+        Python: {
+          snippets: [
+            "def",
+            "import",
+            "print",
+            "self",
+            "None",
+            "True",
+            "False",
+            "class",
+            "lambda",
+            "return",
+            "async",
+            "await",
+          ],
+          textColor: "#453bffff",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+        "C++": {
+          snippets: [
+            "int",
+            "float",
+            "double",
+            "std::",
+            "include",
+            "cout",
+            "cin",
+            "class",
+            "template",
+            "return",
+            "new",
+            "delete",
+          ],
+          textColor: "#5599ff",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+        HTML: {
+          snippets: [
+            "<div>",
+            "<a>",
+            "<p>",
+            "<img>",
+            "<h1>",
+            "<span>",
+            "<script>",
+            "<link>",
+            "<header>",
+            "<footer>",
+          ],
+          textColor: "#FF5733",
+          bgAlpha: 0.08,
+          fontSize: 14,
+          fps: 0.8,
+        },
+        CSS: {
+          snippets: [
+            "color",
+            "background",
+            "display",
+            "flex",
+            "grid",
+            "margin",
+            "padding",
+            "border",
+            "@media",
+            ":root",
+          ],
+          textColor: "#663399",
+          bgAlpha: 0.08,
+          fontSize: 14,
+          fps: 0.8,
+        },
+        Bash: {
+          snippets: [
+            "echo",
+            "ls",
+            "cd",
+            "mkdir",
+            "rm",
+            "touch",
+            "sudo",
+            "apt-get",
+            "chmod",
+            "chown",
+          ],
+          textColor: "#4EAA25",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+        Java: {
+          snippets: [
+            "public",
+            "static",
+            "void",
+            "class",
+            "new",
+            "import",
+            "return",
+            "if",
+            "else",
+            "this",
+          ],
+          textColor: "#b07219",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+        Rust: {
+          snippets: [
+            "fn",
+            "let",
+            "mut",
+            "struct",
+            "enum",
+            "impl",
+            "trait",
+            "use",
+            "pub",
+            "return",
+          ],
+          textColor: "#5599ff",
+          bgAlpha: 0.08,
+          fontSize: 16,
+          fps: 0.8,
+        },
+      };
 
-let currentTheme = localStorage.getItem('currentTheme') || 'JavaScript';
+      let currentTheme = localStorage.getItem("currentTheme") || "JavaScript";
 
-function loadSavedThemes() {
-  try {
-    const raw = localStorage.getItem('savedThemes');
-    if (!raw) return;
-    const saved = JSON.parse(raw);
-    Object.keys(saved).forEach(k => { themes[k] = saved[k]; });
-  } catch (e) {
-    console.warn(e);
-  }
-}
-
-function applyTheme(name) {
-  stopAnimation();
-  currentTheme = name;
-  const t = themes[name] || themes['JavaScript'];
-  snippets = (t.snippets || []).slice();
-  fontSize = t.fontSize || 16;
-  FPS = (t.fps || 0.8) * 20;
-  localStorage.setItem('currentTheme', currentTheme);
-  const sel = document.getElementById('themeSelect');
-  if (sel) sel.value = name;
-  const slider = document.getElementById('rainSpeed');
-  const display = document.getElementById('rainSpeedValue');
-  if (slider) slider.value = (t.fps || 0.8);
-  if (display) display.textContent = (t.fps || 0.8).toFixed(2);
-  resizeCanvasAndSetup();
-  const dpr = window.devicePixelRatio || 1;
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.fillStyle = '#000000';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  startAnimation();
-}
-
-function resizeCanvasAndSetup() {
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = Math.round(rect.width * dpr);
-  canvas.height = Math.round(rect.height * dpr);
-  canvas.style.width = rect.width + 'px';
-  canvas.style.height = rect.height + 'px';
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
-  const columns = Math.ceil(rect.width / columnWidth) + 10;
-  drops = [];
-  for (let i = 0; i < columns; i++) {
-    drops[i] = Math.floor(Math.random() * -150);
-  }
-}
-
-function drawFrame(timestamp) {
-  const elapsed = timestamp - lastFrameTime;
-  if (elapsed > 1000 / FPS) {
-    lastFrameTime = timestamp;
-    const themeConfig = themes[currentTheme] || themes['JavaScript'];
-    const dpr = window.devicePixelRatio || 1;
-    const viewWidth = canvas.width / dpr;
-    const viewHeight = canvas.height / dpr;
-    
-    ctx.fillStyle = `rgba(0, 0, 0, ${themeConfig.bgAlpha || 0.08})`;
-    ctx.fillRect(0, 0, viewWidth, viewHeight);
-    
-    ctx.fillStyle = themeConfig.textColor || '#FFFFFF';
-    ctx.font = `${fontSize}px monospace`;
-    const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
-    
-    for (let i = 0; i < drops.length; i++) {
-      const text = snippets[Math.floor(Math.random() * snippets.length)];
-      ctx.fillText(text, i * columnWidth, drops[i] * fontSize);
-      if (drops[i] * fontSize > viewHeight && Math.random() > 0.992) {
-        drops[i] = 0;
+      function loadSavedThemes() {
+        try {
+          const raw = localStorage.getItem("savedThemes");
+          if (!raw) return;
+          const saved = JSON.parse(raw);
+          Object.keys(saved).forEach((k) => {
+            themes[k] = saved[k];
+          });
+        } catch (e) {
+          console.warn(e);
+        }
       }
-      drops[i] += 1;
-    }
-  }
-  rafId = requestAnimationFrame(drawFrame);
-}
 
-function stopAnimation() {
-  if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-}
-
-function startAnimation() {
-  if (!rafId) rafId = requestAnimationFrame(drawFrame);
-}
-
-window.addEventListener('resize', () => resizeCanvasAndSetup());
-
-function initScrollAnimations() {
-  const elementsToAnimate = document.querySelectorAll('.about-content, .aboute');
-  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
-  let scrollDir = 'down';
-  window.addEventListener('scroll', () => {
-    const currentY = window.pageYOffset || document.documentElement.scrollTop;
-    scrollDir = currentY < lastScrollY ? 'up' : 'down';
-    lastScrollY = currentY;
-  }, { passive: true });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-      } else if (scrollDir === 'up') {
-        entry.target.classList.remove('fade-in');
+      function applyTheme(name) {
+        stopAnimation();
+        currentTheme = name;
+        const t = themes[name] || themes["JavaScript"];
+        snippets = (t.snippets || []).slice();
+        fontSize = t.fontSize || 16;
+        FPS = (t.fps || 0.8) * 20;
+        localStorage.setItem("currentTheme", currentTheme);
+        const sel = document.getElementById("themeSelect");
+        if (sel) sel.value = name;
+        const slider = document.getElementById("rainSpeed");
+        const display = document.getElementById("rainSpeedValue");
+        if (slider) slider.value = t.fps || 0.8;
+        if (display) display.textContent = (t.fps || 0.8).toFixed(2);
+        resizeCanvasAndSetup();
+        const dpr = window.devicePixelRatio || 1;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        startAnimation();
       }
-    });
-  }, { threshold: [0, 0.1] });
-  elementsToAnimate.forEach(el => observer.observe(el));
-}
 
-function initControls() {
-  const slider = document.getElementById('rainSpeed');
-  if (slider) {
-    slider.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      FPS = val * 20;
-      const display = document.getElementById('rainSpeedValue');
-      if (display) display.textContent = val.toFixed(2);
-    });
-  }
-  const themeSelect = document.getElementById('themeSelect');
-  if (themeSelect) {
-    themeSelect.addEventListener('change', (e) => {
-      applyTheme(e.target.value);
-    });
-  }
-  refreshThemeDropdown();
-}
+      function resizeCanvasAndSetup() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
+        canvas.style.width = rect.width + "px";
+        canvas.style.height = rect.height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
+        const columns = Math.ceil(rect.width / columnWidth) + 10;
+        drops = [];
+        for (let i = 0; i < columns; i++) {
+          drops[i] = Math.floor(Math.random() * -150);
+        }
+      }
 
-function refreshThemeDropdown() {
-  const sel = document.getElementById('themeSelect');
-  if (!sel) return;
-  const currentVal = currentTheme;
-  sel.innerHTML = '';
-  Object.keys(themes).forEach(k => {
-    const opt = document.createElement('option');
-    opt.value = k;
-    opt.textContent = k;
-    sel.appendChild(opt);
-  });
-  sel.value = currentVal;
-}
+      function drawFrame(timestamp) {
+        const elapsed = timestamp - lastFrameTime;
+        if (elapsed > 1000 / FPS) {
+          lastFrameTime = timestamp;
+          const themeConfig = themes[currentTheme] || themes["JavaScript"];
+          const dpr = window.devicePixelRatio || 1;
+          const viewWidth = canvas.width / dpr;
+          const viewHeight = canvas.height / dpr;
 
-document.addEventListener('DOMContentLoaded', () => {
-  loadSavedThemes();
-  initControls();
-  initScrollAnimations();
-  applyTheme(currentTheme);
-});
+          ctx.fillStyle = `rgba(0, 0, 0, ${themeConfig.bgAlpha || 0.08})`;
+          ctx.fillRect(0, 0, viewWidth, viewHeight);
 
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault();
-  const menu = document.getElementById('custom-menu');
-  if (menu) {
-    menu.style.top = `${e.pageY}px`;
-    menu.style.left = `${e.pageX}px`;
-    menu.style.display = 'block';
-  }
-});
+          ctx.fillStyle = themeConfig.textColor || "#FFFFFF";
+          ctx.font = `${fontSize}px monospace`;
+          const columnWidth = Math.max(6, Math.round(fontSize * 0.45));
 
-document.addEventListener('click', () => {
-  const menu = document.getElementById('custom-menu');
-  if (menu) menu.style.display = 'none';
-});
+          for (let i = 0; i < drops.length; i++) {
+            const text = snippets[Math.floor(Math.random() * snippets.length)];
+            ctx.fillText(text, i * columnWidth, drops[i] * fontSize);
+            if (drops[i] * fontSize > viewHeight && Math.random() > 0.992) {
+              drops[i] = 0;
+            }
+            drops[i] += 1;
+          }
+        }
+        rafId = requestAnimationFrame(drawFrame);
+      }
 
-const clearBtn = document.getElementById('clearThemes');
-if (clearBtn) {
-  clearBtn.addEventListener('click', () => {
-    localStorage.removeItem('savedThemes');
-    location.reload();
-  });
-}
-   </script>
+      function stopAnimation() {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+
+      function startAnimation() {
+        if (!rafId) rafId = requestAnimationFrame(drawFrame);
+      }
+
+      window.addEventListener("resize", () => resizeCanvasAndSetup());
+
+      function initScrollAnimations() {
+        const elementsToAnimate = document.querySelectorAll(
+          ".about-content, .aboute"
+        );
+        let lastScrollY =
+          window.pageYOffset || document.documentElement.scrollTop;
+        let scrollDir = "down";
+        window.addEventListener(
+          "scroll",
+          () => {
+            const currentY =
+              window.pageYOffset || document.documentElement.scrollTop;
+            scrollDir = currentY < lastScrollY ? "up" : "down";
+            lastScrollY = currentY;
+          },
+          { passive: true }
+        );
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("fade-in");
+              } else if (scrollDir === "up") {
+                entry.target.classList.remove("fade-in");
+              }
+            });
+          },
+          { threshold: [0, 0.1] }
+        );
+        elementsToAnimate.forEach((el) => observer.observe(el));
+      }
+
+      function initControls() {
+        const slider = document.getElementById("rainSpeed");
+        if (slider) {
+          slider.addEventListener("input", (e) => {
+            const val = parseFloat(e.target.value);
+            FPS = val * 20;
+            const display = document.getElementById("rainSpeedValue");
+            if (display) display.textContent = val.toFixed(2);
+          });
+        }
+        const themeSelect = document.getElementById("themeSelect");
+        if (themeSelect) {
+          themeSelect.addEventListener("change", (e) => {
+            applyTheme(e.target.value);
+          });
+        }
+        refreshThemeDropdown();
+      }
+
+      function refreshThemeDropdown() {
+        const sel = document.getElementById("themeSelect");
+        if (!sel) return;
+        const currentVal = currentTheme;
+        sel.innerHTML = "";
+        Object.keys(themes).forEach((k) => {
+          const opt = document.createElement("option");
+          opt.value = k;
+          opt.textContent = k;
+          sel.appendChild(opt);
+        });
+        sel.value = currentVal;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadSavedThemes();
+        initControls();
+        initScrollAnimations();
+        applyTheme(currentTheme);
+      });
+
+      document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        const menu = document.getElementById("custom-menu");
+        if (menu) {
+          menu.style.top = `${e.pageY}px`;
+          menu.style.left = `${e.pageX}px`;
+          menu.style.display = "block";
+        }
+      });
+
+      document.addEventListener("click", () => {
+        const menu = document.getElementById("custom-menu");
+        if (menu) menu.style.display = "none";
+      });
+
+      const clearBtn = document.getElementById("clearThemes");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          localStorage.removeItem("savedThemes");
+          location.reload();
+        });
+      }
+    </script>
   </body>
 </html>
